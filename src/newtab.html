@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#000000">
+    <style>
+      :root { --bg: #000000; --fg: #44DDEE }
+      html { background: var(--bg) }
+      canvas { position: fixed; inset: 0 }
+      aside {
+      content: "x";
+        position: fixed;
+        top: -1rem;
+        left: -1rem;
+        width: 2em;
+        height: 2em;
+        font-size: 2rem;
+        color: var(--bg);
+        border-radius: 2rem;
+        background: var(--fg);
+      }
+    </style>
+  </head>
+  <body>
+    <aside id="options"></aside>
+    <canvas></canvas>
+    <script type="module" src="newtab.js"></script>
+  </body>
+</html> 

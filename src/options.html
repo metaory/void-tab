@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root { --bg: #000000; --fg: #44DDEE }
+    html { background: var(--bg); color: var(--fg); font: 1rem system-ui }
+    body { display: grid; place-content: center; gap: 2rem; height: 100vh; margin: 0 }
+    form { display: grid; gap: 1rem; width: 20rem }
+    label { display: grid; gap: .5rem }
+    input {
+      border: 3px solid var(--fg);
+      border-radius: 1rem;
+      padding: .5rem;
+      background: 0;
+      color: var(--fg)
+    }
+    .void { text-align: center; opacity: .6; font-size: .9rem }
+  </style>
+</head>
+<body>
+  <div class="void">... set colors ...<br>... open new tab ...</div>
+  <form>
+    <label>Background<input type="color" name="bg" value="#000000"></label>
+    <label>Foreground<input type="color" name="fg" value="#44DDEE"></label>
+  </form>
+  <script type="module">
+    const api = globalThis.browser ?? chrome
+    const log = (...args) => console.log(...args)
+    const isValidHex = color => /^#[0-9A-F]{6}$/i.test(color)
+    const form = document.querySelector('form')
+    const root = document.documentElement
+
+    form.addEventListener('input', async ({ target: { name, value } }) => {
+      if (!isValidHex(value)) return
+      root.style.setProperty(`--${name}`, value)
+      await api.storage.sync.set({ [name]: value })
+      log('~save~', name, value)
+    })
+
+    const { bg = '#000000', fg = '#44DDEE' } = await api.storage.sync.get(['bg', 'fg'])
+    form.bg.value = bg
+    form.fg.value = fg
+    Object.entries({ bg, fg }).forEach(([k, v]) => root.style.setProperty(`--${k}`, v))
+    log('~init~', { bg, fg })
+  </script>
+</body>
+</html> 
