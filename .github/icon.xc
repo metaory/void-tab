@@ -17,24 +17,24 @@ set r 40
 set ff monospace
 set fw bold
 set fs 6.8em
-set bg #3311FF
-set fg #55FFDD
+set bg #55FFDD
+set fg #3311FF
 set stroke #55FFDD
-set border 4
+set border 6
 
 pre icons
 
 set s 16
-put 􀙣  icon_16.png
+put 􀕨  icon_16.png
 
 set s 32
-put 􀙣  icon_32.png
+put 􀕨  icon_32.png
 
 set s 48
-put 􀙣  icon_48.png
+put 􀕨  icon_48.png
 
 set s 128
-put 􀙣  icon_128.png
+put 􀕨  icon_128.png
 
 # 􀣳
 # 􀘞 􀋂 􀋃 􀋄 􀋅 􀋆
@@ -47,10 +47,6 @@ put 􀙣  icon_128.png
 # set fg #55FFDD
 
 # 􀢙 􀢚
-#set fg #3311FF
-#set bg #55FFDD
-#set stroke #55FFDD
-#set border 4
 
 #✧
 # set bg #222233

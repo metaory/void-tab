@@ -4,3 +4,4 @@ node_modules/
 *-lock.*
 *.zip
 *.xpi
+web-ext-artifacts/
